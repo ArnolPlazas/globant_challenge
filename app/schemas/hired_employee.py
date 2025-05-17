@@ -9,7 +9,3 @@ class EmployeeBase(BaseModel):
 
 class EmployeeCreate(EmployeeBase):
     pass
-
-class Employee(EmployeeBase):
-    class Config:
-        from_attributes = True

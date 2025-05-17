@@ -1,4 +1,15 @@
 services:
+  fastapi:
+    build: .
+    container_name: fastapi_app
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+    environment:
+      - PYTHONUNBUFFERED=1
+    depends_on:
+      - postgres
   postgres:
     image: postgres:13
     container_name: postgres_globant
@@ -13,7 +24,3 @@ services:
 
 volumes:
   postgres_data:
-# networks:
-#   default:
-#     external:
-#       name: airflow_pg_net¬

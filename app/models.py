@@ -1,14 +1,10 @@
-from sqlalchemy import Column, Date, Integer, String, ForeignKey, MetaData
+from sqlalchemy import Column, Integer, String, ForeignKey, MetaData
 from sqlalchemy.orm import declarative_base
-
-from connect_postgres import get_engine
 
 
 SCHEMA = 'public'
 
 Base = declarative_base(metadata=MetaData(schema=SCHEMA))
-# engine = get_engine()
-
 
 class HiredEmployee(Base):
     __tablename__ = 'hired_employees'

@@ -6,7 +6,3 @@ class DepartmentBase(BaseModel):
 
 class DepartmentCreate(DepartmentBase):
     pass
-
-class Department(DepartmentBase):
-    class Config:
-        from_attributes = True

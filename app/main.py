@@ -2,16 +2,16 @@ from typing import List
 from fastapi import FastAPI, UploadFile, File, HTTPException
 import os
 
-from models import HiredEmployee, Department, Job
-from schemas.department import DepartmentCreate
-from schemas.job import JobCreate
-from schemas.hired_employee import EmployeeCreate
-from schemas.hire_stats import HireStats
-from schemas.hire_quarter_stats import HireQuarterStats
+from app.models import HiredEmployee, Department, Job
+from app.schemas.department import DepartmentCreate
+from app.schemas.job import JobCreate
+from app.schemas.hired_employee import EmployeeCreate
+from app.schemas.hire_stats import HireStats
+from app.schemas.hire_quarter_stats import HireQuarterStats
 
 
-from crud_sql import upsert_data, query_data
-from get_data_from_csv import get_records_from_file
+from app.crud_sql import upsert_data, query_data
+from app.get_data_from_csv import get_records_from_file
 
 
 app = FastAPI(
@@ -20,13 +20,13 @@ app = FastAPI(
     version="1.0.0"
 )
 
-PATH_DEPARTMENT = 'data/departments.csv'
+PATH_DEPARTMENT = './data/departments.csv'
 COLUMNS_DEPARTMENT = ['id', 'department']
 
-PATH_JOB = 'data/jobs.csv'
+PATH_JOB = './data/jobs.csv'
 COLUMNS_JOB = ['id', 'job']
 
-PATH_HIREDEMPLOYEES = 'data/hired_employees.csv'
+PATH_HIREDEMPLOYEES = './data/hired_employees.csv'
 COLUMNS_HIREDEMPLOYEES = ['id', 'name', 'datetime', 'department_id', 'job_id']
 
 @app.get("/historical-department-data")

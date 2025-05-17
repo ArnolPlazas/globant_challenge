@@ -1,19 +1,9 @@
-import pandas as pd
 from sqlalchemy.dialects.postgresql import insert
 from sqlalchemy import text
 
-from connect_postgres import get_session
+from app.connect_postgres import get_session
 
 session = get_session()
-
-
-def insert_data(path, columns, table):
-    df = pd.read_csv(path, names=columns).convert_dtypes()
-    list_dict = df.to_dict(orient='records')
-
-    session.bulk_insert_mappings(table, list_dict)
-    session.commit()
-    session.close()
 
 def upsert_data(model, records, unique_constraint):
     stmt = insert(model).values(records)

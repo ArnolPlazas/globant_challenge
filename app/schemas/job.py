@@ -6,7 +6,3 @@ class JobBase(BaseModel):
 
 class JobCreate(JobBase):
     pass
-
-class Job(JobBase):
-    class Config:
-        from_attributes = True
