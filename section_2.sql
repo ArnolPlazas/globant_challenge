@@ -10,7 +10,7 @@ SELECT
   COUNT(*) FILTER (WHERE EXTRACT(QUARTER FROM datetime::timestamp) = 4) AS Q4
 FROM hired_employees h
 INNER JOIN departments d ON h.department_id = d.id
-INNER JOIN jobs j ON h.department_id = j.id
+INNER JOIN jobs j ON h.job_id = j.id
 WHERE EXTRACT(YEAR FROM datetime::timestamp) = 2021
 GROUP BY d.department, j.job
 ORDER BY d.department, j.job
